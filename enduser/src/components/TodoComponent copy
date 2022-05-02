@@ -1,0 +1,143 @@
+// import { ApolloClient, ApolloConsumer, gql, useApolloClient, useQuery } from "@apollo/client";
+// import { withApollo, WithApolloClient } from "@apollo/client/react/hoc";
+// import React from "react";
+// import { CREATE_TODO, DELETE_TODO, UPDATE_TODO } from "../interfaces/mutation";
+// import { GET_TODO_LIST } from "../interfaces/query";
+// import { TODO } from "../interfaces/todo";
+// import InputAtom from "./atoms/InputAtom";
+// import TodoListOrganism from "./organisms/TodoListOrganism";
+
+// interface IProps extends WithApolloClient<any> {
+
+// }
+
+// interface IStates {
+//     todos: TODO[];
+// }
+
+// class TodoComponent extends React.Component<IProps, IStates> {
+//     constructor(props: IProps) {
+//         super(props);
+
+//         this.state = {
+//             todos: [],
+//         }
+//     }
+
+//     componentDidMount() {
+//         this.fetchTasks();
+//     }
+
+//     fetchTasks = () => {
+//         const client = this.props.client as ApolloClient<any>;
+
+//         client.query({
+//             query: GET_TODO_LIST,
+//         }).then((res: any) => {
+//             console.log("From to do list", res.data);
+//             let todos: TODO[] = [];
+
+//             res.data.todos.forEach((t: TODO) => {
+//                 todos.push({
+//                     id: t.id,
+//                     name: t.name,
+//                 });
+//             });
+
+//             this.setState({
+//                 todos,
+//             });
+//         })
+//     }
+
+//     createTask = (task: string) => {
+//         const client = this.props.client as ApolloClient<any>;
+
+//         client.mutate({
+//             mutation: CREATE_TODO(task),
+//         }).then((res: any) => {
+//             const { todos } = this.state;
+
+//             todos.push({
+//                 id: res.data.createTodo.id,
+//                 name: task,
+//             });
+
+//             this.setState({
+//                 todos,
+//             })
+//         }).catch((err) => {
+//             if (err.networkError) {
+//                 alert(err.networkError.result.errors[0].message);
+//             } else {
+//                 console.log(err.message)
+//             }
+//         });
+//     }
+
+//     deleteTask = (index: number) => {
+//         const client = this.props.client as ApolloClient<any>;
+
+//         const { todos } = this.state;
+
+//         client.mutate({
+//             mutation: DELETE_TODO(todos[index].id)
+//         }).then((res: any) => {
+//             todos.splice(index, 1);
+
+//             this.setState({
+//                 todos,
+//             })
+//         }).catch((err) => {
+//             if (err.networkError) {
+//                 alert(err.networkError.result.errors[0].message);
+//             } else {
+//                 console.log(err.message)
+//             }
+//         });
+//     }
+
+//     updateTask = (index: number, value: string) => {
+//         const client = this.props.client as ApolloClient<any>;
+
+//         const { todos } = this.state;
+
+//         client.mutate({
+//             mutation: UPDATE_TODO(todos[index].id, value),
+//         }).then(() => {
+//             todos[index].name = value;
+
+//             this.setState({
+//                 todos,
+//             })
+//         }).catch((err) => {
+//             if (err.networkError) {
+//                 alert(err.networkError.result.errors[0].message);
+//             } else {
+//                 console.log(err.message)
+//             }
+//         });
+//     }
+
+//     render() {
+//         const { todos } = this.state;
+
+//         return <div data-testid="todo-component" className="todo-component">
+//             <h1 className="tc-heading">TODO App</h1>
+//             <div className="tc-content">
+//                 <div className="tc-input">
+//                     <InputAtom enterEvent={this.createTask} placeholder="Enter a task name and hit enter" />
+//                 </div>
+//                 <div className="tc-list">
+//                     <TodoListOrganism
+//                         todos={todos}
+//                         deleteEvent={this.deleteTask}
+//                         updateEvent={this.updateTask}
+//                     />
+//                 </div>
+//             </div>
+//         </div>
+//     }
+// }
+
+// export default withApollo(TodoComponent);

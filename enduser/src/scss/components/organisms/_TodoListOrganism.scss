@@ -1,0 +1,27 @@
+.todo-list-organism {
+    display: block;
+    width: 100%;
+
+    .tlo-list-item {
+        margin-bottom: 30px;
+        padding-top: 0;
+        transition: padding 200ms;
+        &.show {
+            &.ghost {
+                display: block;
+            }
+        }
+
+        &.ghost {
+            display: none;
+            opacity: 0.6;
+            .tia-name {
+                line-height: 13px;
+                &:after {
+                    content: "Ghost";
+                    visibility: hidden;
+                }
+            }
+        }
+    }
+}

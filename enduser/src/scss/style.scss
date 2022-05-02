@@ -1,0 +1,33 @@
+@import "./variables";
+@import "./reset";
+@import "./components/component";
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300");
+
+* {
+    font-family: "Rubik", sans-serif !important;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f4f4f4;
+}
+
+.btn {
+    border: 1px solid #e2e2e2;
+    background: transparent;
+    padding: 6px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    &.primary {
+        color: #000fff;
+        border-color: #000fff;
+    }
+    &.success {
+        color: green;
+        border-color: green;
+    }
+    &.danger {
+        color: red;
+        border-color: red;
+    }
+}

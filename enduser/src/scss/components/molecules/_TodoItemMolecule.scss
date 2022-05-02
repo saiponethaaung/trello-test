@@ -1,0 +1,39 @@
+.todo-item-molecule {
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+    .tim-edit-action {
+        display: none;
+
+        .status-btn {
+            
+        }
+    }
+
+    .tim-edit-form {
+        .input-atom {
+            margin-bottom: 15px;
+        }
+        .tim-action-buttons {
+            display: flex;
+        }
+    }
+
+    .tim-action-buttons {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .tim-edit-form,
+    .tim-edit-action {
+        padding: 10px;
+        button {
+            margin-right: 10px;
+        }
+    }
+
+    &:hover {
+        .tim-edit-action {
+            display: flex;
+        }
+    }
+}

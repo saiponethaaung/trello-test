@@ -1,0 +1,59 @@
+.todo-component {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    text-align: center;
+    .tc-heading {
+        font-size: 32px;
+        line-height: 36px;
+        margin-bottom: 30px;
+    }
+    .tc-list {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%;
+        overflow: auto;
+        height: calc(100vh - 96px);
+
+        .tc-content {
+            border: 1px solid #e2e2e2;
+            background: #fff;
+            width: 320px;
+            // margin: 30px 0;
+            margin-right: 30px;
+            border-radius: 5px;
+            overflow: hidden;
+            flex-grow: 0;
+            flex-shrink: 0;
+            max-height: 98%;
+            display: flex;
+            flex-direction: column;
+
+            @include boxShadow;
+            .tc-card-name {
+                display: block;
+                text-align: left;
+                padding: 16px 16px 0 16px;
+            }
+
+            .tc-content-con {
+                padding: 16px;
+                height: 100%;
+                overflow: auto;
+            }
+
+            .tc-input {
+                margin-bottom: 30px;
+            }
+        }
+
+        .no-margin {
+            &.tc-input {
+                margin-bottom: 0 !important;
+            }
+        }
+    }
+}

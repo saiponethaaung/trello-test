@@ -1,0 +1,87 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type TodoList {
+  """Example field (placeholder)"""
+  id: Int!
+
+  """Task name"""
+  name: String!
+  order: Int!
+  todos: [TodoItem!]!
+}
+
+type TodoItem {
+  """Example field (placeholder)"""
+  id: Int!
+
+  """Task name"""
+  name: String!
+  order: Int!
+  todo_list_id: Int!
+  status: Int!
+}
+
+type Query {
+  todos(id: Int!): [TodoItem!]!
+  todo(id: Int!): TodoItem!
+  todoList: [TodoList!]!
+}
+
+type Mutation {
+  createTodo(createTodoInput: CreateTodoItemInput!): TodoItem!
+  updateTodo(updateTodoInput: UpdateTodoItemInput!): TodoItem!
+  updateTodoOrder(updateTodoOrderInput: UpdateTodoItemOrderInput!): String!
+  updateTodoStatus(updateTodoItemStatusInput: UpdateTodoItemStatusInput!): String!
+  removeTodo(id: Int!): String!
+  createTodoList(createTodoListInput: CreateTodoListInput!): TodoList!
+  updateTodoList(updateTodoListInput: UpdateTodoListInput!): TodoList!
+  removeTodoList(id: Int!): TodoList!
+}
+
+input CreateTodoItemInput {
+  """Task name"""
+  name: String!
+
+  """Todo list id"""
+  todo_list_id: Int!
+}
+
+input UpdateTodoItemInput {
+  """Task name"""
+  name: String!
+
+  """Todo list id"""
+  todo_list_id: Int
+
+  """Task id"""
+  id: Int!
+}
+
+input UpdateTodoItemOrderInput {
+  """Task id"""
+  id: [Int!]!
+
+  """List id"""
+  todo_list_id: Int!
+}
+
+input UpdateTodoItemStatusInput {
+  """Task id"""
+  id: Int!
+
+  """Status"""
+  status: Int!
+}
+
+input CreateTodoListInput {
+  """List name"""
+  name: String!
+}
+
+input UpdateTodoListInput {
+  """List name"""
+  name: String
+  id: Int!
+}
